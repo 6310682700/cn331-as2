@@ -2,9 +2,11 @@
 {% block body %}
 <h3>Welcome, {{ request.user.first_name }}</h3>
 <ul>
-    <li>Username: {{ request.user.username }}</li>
+    <li>Username: {{ request.user.username }}</li>    
 </ul>
 
-
+{% if request.user.is_staff %}
+<a href="admin/">Admin</a>
+{% endif %}
 <a href="{% url 'logout' %}">Log out</a>
 {% endblock %}
