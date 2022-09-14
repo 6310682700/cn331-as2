@@ -9,4 +9,23 @@
 <a href="admin/">Admin</a>
 {% endif %}
 <a href="{% url 'logout' %}">Log out</a>
+
+<h3> Class : <h3>
+    
+        {%for Subject in Class%}
+        <h4>  {{Subject}} </h4>
+        {% endfor %}
+
+<h4>Register to class</h4>
+
+<form action="{% url 'Regist' request.user.first_name %}" method="POST">
+    {% csrf_token %}
+    <select name="Student">
+        {% for Student in non_Students %}
+            <option value="{{ request.user.first_name }}">{{ Student }}</option>
+        {% endfor %}
+    </select>
+    <input type="submit" value="Add Student">
+</form>
+
 {% endblock %}

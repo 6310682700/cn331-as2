@@ -1,20 +1,24 @@
+from ast import ClassDef
+from platform import mac_ver
 from tkinter import CASCADE
 from django.db import models
 from django.contrib.auth.models import User
 
 # Create your models here.
 
-class Student(models.Model):
-    firstname = models.CharField(max_length=99)
-    surname = models.CharField(max_length=99)
-    studentid = models.CharField(max_length=10)
-
-    def __str__(self):
-        return f"({self.name} ({self.surname} {self.studentid})"
-
 class Class(models.Model):
-    subject = models.ForeignKey(Student, on_delete=models.CASCADE, related_name="Subject")
-    capacity = models.ForeignKey(Student, on_delete=models.CASCADE, related_name="capacity")
+    Subject = models.CharField(max_length=99)
+    capacity = models.IntegerField()
 
     def __str__(self):
-        return f"{self.subject} ({self.capacity})"
+        return f"{self.Subject} ({self.capacity})"
+
+class Student(models.Model):
+    enroll = models.ForeignKey(Class,on_delete=models.CASCADE)
+    Student_Users = models.ForeignKey(User,on_delete=models.CASCADE)
+
+    def __str__(self):
+        return f"({self.enroll}) {self.Student_Users}"
+
+
+     
