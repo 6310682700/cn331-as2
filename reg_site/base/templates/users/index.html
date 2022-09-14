@@ -18,14 +18,14 @@
 
 <h4>Register to class</h4>
 
-<form action="{% url 'Regist' request.user.first_name %}" method="POST">
+<form method="POST">
     {% csrf_token %}
     <select name="Student">
         {% for Student in non_Students %}
-            <option value="{{ request.user.first_name }}">{{ Student }}</option>
+            <option value="{{ request.user.first_name }}">{{ Class.Subject }}</option>
         {% endfor %}
     </select>
-    <input type="submit" value="Add Student">
+    <input type="submit" value="Add Student to class">
 </form>
 
 {% endblock %}

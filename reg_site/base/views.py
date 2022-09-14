@@ -47,5 +47,5 @@ def Regist(request, Username):
         Student = Student.objects.get(pk = name)
         Student = Student.objects.get(pk=int(request.POST["Student"]))
         Student.Classs.add(Class)
-        return HttpResponseRedirect("Class", args=(Student.name,))
+        return HttpResponseRedirect('index.html', args=(Student.name,))
 
