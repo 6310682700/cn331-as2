@@ -42,20 +42,20 @@ def logout_view(request):
         'message': 'You have logged out.'
     })
 
-def regist(request, Student_id ):
+def regist(request):
     if request.method == "POST":
-        Enrollment = Class.objects.get(id = Student.id)
-        Student.Class.add(Student)
-        return render(request, 'users.html', {
-            "Enrollment" : Enrollment
+        Enroll = Student.enroll.add(Class.Subject)
+        Class.capacity = Class.capacity + 1
+        return render(request, 'index.html', {
+            "Enrollment" : Enroll
     })
 
-def remove(request, Student_id):
+def remove(request):
     if request.method == "POST":
-        Enrollment = Class.objects.get(id = Student_id)
-        Student.Class.remove(Student)
-        return render(request, 'users.html', {
-            "Enrollment" : Enrollment
+        Enroll = Student.enroll.remove(Class.Subject)
+        Class.capacity = Class.capacity - 1
+        return render(request, 'index.html', {
+            "Enrollemnt" : Enroll
     })
 
 

@@ -15,7 +15,7 @@ class Class(models.Model):
         return f"{self.Subject} ({self.capacity})"
     
 class Student(models.Model):
-    enroll = models.ForeignKey("Class",on_delete=models.CASCADE, related_name = 'Student')
+    enroll = models.ManyToManyField(User, related_name="Student", blank=True)
     Student_Users = models.ForeignKey(User,on_delete=models.CASCADE)
 
     def __str__(self):
