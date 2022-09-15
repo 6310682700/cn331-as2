@@ -1,5 +1,6 @@
 from ast import ClassDef
 from platform import mac_ver
+from pyexpat import model
 from tkinter import CASCADE
 from django.db import models
 from django.contrib.auth.models import User
@@ -12,13 +13,10 @@ class Class(models.Model):
 
     def __str__(self):
         return f"{self.Subject} ({self.capacity})"
-
+    
 class Student(models.Model):
-    enroll = models.ForeignKey(Class,on_delete=models.CASCADE)
+    enroll = models.ForeignKey("Class",on_delete=models.CASCADE, related_name = 'Student')
     Student_Users = models.ForeignKey(User,on_delete=models.CASCADE)
 
     def __str__(self):
         return f"({self.enroll}) {self.Student_Users}"
-
-
-     

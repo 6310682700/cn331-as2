@@ -42,10 +42,18 @@ def logout_view(request):
         'message': 'You have logged out.'
     })
 
-def Regist(request, Username):
+def Regist(request):
+    if request.method == "GET":
+        Student = Student.objects.get(pk = name)
+        Student = Student.objects.get(pk=request.POST["Student"])
+        Class.Student.add(Student)
+        return HttpResponseRedirect('index.html', args=(Student.name,))
+
+def Remove(request):
     if request.method == "POST":
         Student = Student.objects.get(pk = name)
-        Student = Student.objects.get(pk=int(request.POST["Student"]))
-        Student.Classs.add(Class)
+        Student = Student.objects.get(pk=request.POST["Student"])
+        Class.Student.remove(Student)
         return HttpResponseRedirect('index.html', args=(Student.name,))
+
 
