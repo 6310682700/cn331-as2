@@ -9,4 +9,25 @@
 <a href="admin/">Admin</a>
 {% endif %}
 <a href="{% url 'logout' %}">Log out</a>
+
+<h3> Class (capacity) : <h3>
+    
+        {% for Subject in courses %}
+        <h4>  {{Subject}} </h4>
+        {% endfor %}
+
+<a href="enroll">Add/Delete Enroll</a>
+
+<!-- <h4>Remove to class</h4>
+
+<form  method="POST">
+    {% csrf_token %}
+    <select name="Student">
+        {% for Subject in Class %}
+            <option value="{{ Subject }}">{{ Subject }}</option>
+        {% endfor %}
+    </select>
+    <input type="submit" value="Remove Me from class">
+</form> -->
+
 {% endblock %}

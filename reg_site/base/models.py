@@ -1,28 +1,27 @@
-from tkinter import CASCADE
+from enum import unique
 from django.db import models
 from django.contrib.auth.models import User
 
 # Create your models here.
 
+class Course(models.Model):
+    Subject = models.CharField(max_length=99)
+    capacity = models.IntegerField()
+
+    def __str__(self):
+        return f"{self.Subject} ({self.capacity})"
+    
 class Student(models.Model):
-    StudentUser = models.ForeignKey(User, on_delete=models.CASCADE, null=False, blank=False)
-    StudentCode = models.CharField(max_length=10, null=False, blank=False)
-    StudentYear = models.IntegerField(null=True, blank=True)
-    StudentSem = models.IntegerField(null=True, blank=True)
+    courses = models.ManyToManyField(Course, blank=True, through='Enroll')
+    Student_Users = models.ForeignKey(User, on_delete=models.CASCADE)
 
     def __str__(self):
-        return self.StudentUser.first_name
-
-class Class(models.Model):
-    ClassCode = models.CharField(max_length=10, primary_key=True)
-    ClassName = models.CharField(max_length=100, null=False, blank=False)
-    ClassYear = models.CharField(max_length=100, null=True, blank=True)
-    ClassSem = models.CharField(max_length=100, null=True, blank=True)
-    ClassCapacity = models.IntegerField(null=False, blank=False)
-
-    def __str__(self):
-        return self.ClassCode
+        return f"{self.Student_Users}"
 
 class Enroll(models.Model):
-    EnrollUser = models.ForeignKey(User, on_delete=models.CASCADE, null=False, blank=False)
-    EnrollClass = models.ForeignKey(Class, on_delete=models.CASCADE, null=False, blank=False)
+    student = models.ForeignKey(Student, on_delete=models.CASCADE)
+    course = models.ForeignKey(Course, on_delete=models.CASCADE)
+
+    class Meta:
+        unique_together = [['student', 'course']]
+
