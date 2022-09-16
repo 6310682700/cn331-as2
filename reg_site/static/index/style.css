@@ -1,0 +1,28 @@
+
+    body {
+        font-family: font-family;
+        font-size: font-size;
+        background-size: 200% 100% ;
+        background-color: #49D49D;
+        height: 100vh
+    }
+    h1 {
+        font-weight : Bold;
+        text-align : center;
+        font-family : "Lucida Handwriting" ,cursive ;
+    }
+    h4 {
+        font-weight : Bold;
+        font-family : "Time New Roman" ,serif ;
+    }
+    li { 
+        font-size : x-large ;
+    }
+    h3 {
+        font-size: larger;
+        font-family : "Helvetica", san-serif
+    }
+    h4 {
+        font-size : larger;
+        font-family : "Georgia" , serif
+    }

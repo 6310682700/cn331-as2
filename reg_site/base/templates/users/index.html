@@ -1,6 +1,10 @@
 {% extends 'users/layout.html' %}
 {% block body %}
-<h3>Welcome, {{ request.user.first_name }}</h3>
+
+{% load static %}
+<link rel="stylesheet" href="{% static 'index/style.css' %}" type = "text/css">
+
+<h1>Welcome, {{ request.user.first_name }}</h1>
 <ul>
     <li>Username: {{ request.user.username }}</li>    
 </ul>
@@ -13,7 +17,7 @@
 <h3> Class (capacity) : <h3>
     
         {%for Subject in Class%}
-        <h4>  {{Subject}} </h4>
+        <p>  {{Subject}} </p>
         {% endfor %}
 
 <h4>Register to class</h4>
