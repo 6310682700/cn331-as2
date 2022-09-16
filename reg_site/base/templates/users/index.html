@@ -20,7 +20,7 @@
         <h4>  {{Subject}} </h4>
         {% endfor %}
 
-<a href="enroll">Add/Delete Enroll</a>
+<a href="{% url 'enroll' request.user.id %}">Add/Delete Enroll</a>
 
 <!-- <h4>Remove to class</h4>
 

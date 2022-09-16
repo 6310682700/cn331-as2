@@ -7,14 +7,24 @@
 
 <h4>Register to class</h4>
 
-<form action="{% url 'enrollment' %}" method="POST">
+<form action="{% url 'enrollment' request.user.id %}" method="POST">
     {% csrf_token %}
-    <select name="Student">
+    <select name="Subject">
         {% for Subject in courses %}
-            <option value="{{ Subject }}">{{ Subject }}</option>
-        {% endfor %}
+            <option value="{{ Subject.id }}">{{ Subject }}</option>
+        {% endfor %}        
     </select>
     <input type="submit" value="Add Me to this class">
+</form>
+
+<form action="{% url 'remove_enroll' request.user.id %}" method="POST">
+    {% csrf_token %}
+    <select name="Subject">
+        {% for Subject in courses %}
+            <option value="{{ Subject.id }}">{{ Subject }}</option>
+        {% endfor %}        
+    </select>
+    <input type="submit" value="Remove Me from this class">
 </form>
 
 <a href="{% url 'index' %}">Back</a>

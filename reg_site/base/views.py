@@ -3,6 +3,7 @@ from cgitb import html
 from email import message
 from http.client import HTTPResponse
 from re import sub
+import re
 from django.shortcuts import render
 from django.contrib.auth import authenticate, login, logout
 from django.http import HttpResponseRedirect
@@ -44,7 +45,7 @@ def logout_view(request):
     })
 
 
-def enroll(request):
+def enroll(request, student_id):
     if not request.user.is_authenticated:
         return HttpResponseRedirect(reverse('login'))
     student = Student.objects.get(Student_Users_id=request.user.id)
@@ -54,10 +55,15 @@ def enroll(request):
         "subjects": student,
     })
 
+def enrollment(request, student_id):
+    course = Course.objects.get(id=request.POST["Subject"])
+    student = Student.objects.get(Student_Users_id=student_id)
+    student.courses.add(course)
+    return HttpResponseRedirect(reverse("enroll", args=(request.user.id,)))
 
-def enrollment(request, coures):
-    if request.method == "POST":
-        course = Course.objects.get(id=coures)
-        student = Student.objects.get(Student_Users_id=request.user.id)
-        student.course.add(course)
-        return HttpResponseRedirect("index.html")
+def remove_enroll(request, student_id):
+    course = Course.objects.get(id=request.POST["Subject"])
+    student = Student.objects.get(Student_Users_id=student_id)
+    student.courses.remove(course)
+    return HttpResponseRedirect(reverse("enroll", args=(request.user.id,)))
+
