@@ -7,7 +7,7 @@
 
 <h4>Register to class</h4>
 
-<form action="{% url 'enroll' %}" method="POST">
+<form action="{% url 'enrollment' %}" method="POST">
     {% csrf_token %}
     <select name="Student">
         {% for Subject in courses %}
@@ -16,5 +16,7 @@
     </select>
     <input type="submit" value="Add Me to this class">
 </form>
+
+<a href="{% url 'index' %}">Back</a>
 
 {% endblock %}
