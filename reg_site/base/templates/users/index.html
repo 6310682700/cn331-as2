@@ -16,7 +16,6 @@
 
 <h3> Class (capacity) : <h3>
     
-<<<<<<< HEAD
         {% for Subject in courses %}
         <h4>  {{Subject}} </h4>
         {% endfor %}
@@ -26,27 +25,6 @@
 <!-- <h4>Remove to class</h4>
 
 <form  method="POST">
-=======
-        {%for Subject in Class%}
-        <p>  {{Subject}} </p>
-        {% endfor %}
-
-<h4>Register to class</h4>
-
-<form action= "{% url 'regist' %}" method="POST">
-    {% csrf_token %}    
-    <select name="Student">
-        {% for Subject in Class %}
-            <option value="{{ Subject }}">{{ Subject }}</option>
-        {% endfor %}
-    </select>
-    <input type="submit" value="Add Me to class">
-</form>
-
-<h4>Remove to class</h4>
-
-<form action= "{% url 'remove' %}" method="POST">
->>>>>>> 805505f26bebf9e4cf09e4cc3710865e50dbb88d
     {% csrf_token %}
     <select name="Student">
         {% for Subject in Class %}
@@ -54,10 +32,6 @@
         {% endfor %}
     </select>
     <input type="submit" value="Remove Me from class">
-<<<<<<< HEAD
 </form> -->
-=======
-</form>
->>>>>>> 805505f26bebf9e4cf09e4cc3710865e50dbb88d
 
 {% endblock %}
