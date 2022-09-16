@@ -6,7 +6,7 @@
 ```bash
 $ # Get the code
 $ git clone https://github.com/6310682700/cn331-as2.git
-$ cd material-dashboard-django
+$ cd cn331-as2
 $
 $ # Virtualenv modules installation (Unix based systems)
 $ virtualenv env
