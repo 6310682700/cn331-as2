@@ -1,5 +1,10 @@
 {% extends 'users/layout.html' %}
 {% block body %}
+
+{% load static %}
+<link rel="stylesheet" href="{% static 'index/add.css' %}" type = "text/css">
+
+<div class = "user">
 <h3>Welcome, {{ request.user.first_name }}</h3>
 <ul>
     <li>Username: {{ request.user.username }}</li>    
@@ -9,12 +14,34 @@
 
 <form action="{% url 'enrollment' request.user.id %}" method="POST">
     {% csrf_token %}
+<<<<<<< HEAD
     <select name="Subject">
+=======
+    <div class = "option">
+    <select name="Student">
+        {% for Subject in courses %}
+            <option value="{{ Subject }}">{{ Subject }} </option>
+        {% endfor %}
+    </select>
+</div>
+    <input type="submit" value="Add Me to this class" style = "background-color: 90ee90; font-family: 'Courier New; font-weight: bold;',
+     Courier, monospace; width: 100%; padding:15px 15px;" />
+
+</form>
+
+<form action="{% url 'enrollment' %}" method="POST">
+    {% csrf_token %}
+    <div class = "option">
+    <select name="Student">
+>>>>>>> ae1bdc19f9e259981545499d710125973d531e1f
         {% for Subject in courses %}
             <option value="{{ Subject.id }}">{{ Subject }}</option>
         {% endfor %}        
     </select>
-    <input type="submit" value="Add Me to this class">
+    </div>
+    <input type="submit" value="Withdraw me from this class" style = "background-color: 90ee90; font-family: 'Courier New; font-weight: bold;',
+     Courier, monospace; width: 100%; padding:15px 15px;" />
+
 </form>
 
 <form action="{% url 'remove_enroll' request.user.id %}" method="POST">
@@ -28,5 +55,5 @@
 </form>
 
 <a href="{% url 'index' %}">Back</a>
-
+</div>
 {% endblock %}
