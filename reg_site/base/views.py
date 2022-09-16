@@ -7,9 +7,7 @@ from django.shortcuts import render
 from django.contrib.auth import authenticate, login, logout
 from django.http import HttpResponseRedirect
 from django.urls import reverse
-from base import models
-from base.models import Class
-from base.models import Student
+
 
 from .models import Course, Student, Enroll
 
@@ -57,7 +55,7 @@ def enroll(request):
     })
 
 
-def enroll(request, coures):
+def enrollment(request, coures):
     if request.method == "POST":
         course = Course.objects.get(id=coures)
         student = Student.objects.get(Student_Users_id=request.user.id)
