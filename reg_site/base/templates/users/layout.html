@@ -1,3 +1,23 @@
+{% load static %}
+<link rel="stylesheet" href="{% static 'index/sidebar.css' %}" type = "text/css">
+
+<div class = "sidebar">
+    <input type="checkbox" id="toggler" />
+    <aside class="aside-wrapper">
+      <h1 class="logo-text"><span>CN331 Registration</span> <label for="toggler"><i class="fas fa-bars sidebar-toggle"></i></label></h1>
+    
+      <ul>
+        <li><a href="{% url 'enroll' request.user.id %}">Registration</a></li>
+        <li><a href="{% url 'logout' %}">Log out</a></li>
+        {% if request.user.is_staff %}
+        <li><a href="admin/">Admin</a></li>
+            {% endif %}
+      </ul>
+    
+    </aside>
+    </div>
+
+{% block content %}
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -6,7 +26,7 @@
     <title>Users</title>
 </head>
 <body>
-    {% block body %}
-    {% endblock %}
+
 </body>
+{% endblock %}
 </html>

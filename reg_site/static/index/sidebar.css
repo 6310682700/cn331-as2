@@ -1,0 +1,89 @@
+html,
+body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+  background-size: 200% 100% ;
+  background: linear-gradient(45deg, #49D49D 10%, #A2C7E5 90%);
+  height: 100vh
+}
+aside {
+  width: 250px;
+  height: 100vh;
+  background: #90ee90;
+  position: fixed;
+
+  color: rgb(10, 0, 0);
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+
+  box-shadow: 3px 1px 5px 0px rgba(0, 0, 0, 0.75)
+}
+
+aside ul {
+  padding-inline-start: 0;
+}
+
+aside ul li {
+  list-style: none;
+  font-size: 18px;
+  padding: 20px 0;
+  cursor: pointer;
+}
+
+aside ul li .fas {
+  width: 50px;
+}
+
+.aside-wrapper {
+  padding: 0 40px;
+  box-sizing: border-box;
+}
+
+.logo-text {
+  font-size:28px;
+  position: relative;
+  width: 100%;
+}
+
+.sidebar-toggle {
+  position: absolute;
+  top: 10px;
+  left: 205px;
+  background: #90ee90;
+  padding: 4px 11px;
+  text-align: center;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+input {
+  display: none;
+}
+
+input:checked ~ aside {
+  left: -250px;
+}
+h1 {
+    font-weight : Bold;
+    text-align : center;
+    font-family : "Lucida Handwriting" ,cursive ;
+}
+h4 {
+    font-weight : Bold;
+    font-family : "Time New Roman" ,serif ;
+}
+li {
+    font-size : x-large ;
+}
+h3 {
+    font-size: larger;
+    font-family : "Helvetica", san-serif
+}
+h4 {
+    font-size : larger;
+    font-family : "Georgia" , serif
+}
+
