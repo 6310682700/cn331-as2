@@ -49,23 +49,30 @@ def enroll(request, student_id):
     if not request.user.is_authenticated:
         return HttpResponseRedirect(reverse('login'))
     student = Student.objects.get(Student_Users_id=request.user.id)
-    course = Course.objects.all()
-    # if student.courses.all() != None:
-        # enroll = 
+    course = Course.objects.all()    
+    if student.courses.all() != None:
+        enroll = Enroll.objects.filter(student_id=student.id)        
+        unenroll = Course.objects.exclude(id__in=enroll.all().values_list('course_id'))
     return render(request, 'users/enroll.html', {
         "courses": course,
+        "unenroll": unenroll,
+        "enroll": student.courses.all(),
         "subjects": student,
     })
 
-def search(request):
+def search(request, student_id):
     if not request.user.is_authenticated:
         return HttpResponseRedirect(reverse('login'))
     student = Student.objects.get(Student_Users_id=request.user.id)
     course = Course.objects.all()
-    # if student.course != None:
-        
+    if student.courses != None:
+        enroll = Enroll.objects.filter(student_id=student.id)
+        unenroll = Course.objects.exclude(id__in=enroll.all().values_list('course_id'))
+        unenroll_search = unenroll.filter(Subject__icontains=request.POST["search"])
     return render(request, 'users/enroll.html', {
         "courses": course,
+        "unenroll": unenroll_search,
+        "enroll": student.courses.all(),
         "subjects": student,
     })
 

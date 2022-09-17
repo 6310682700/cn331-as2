@@ -10,14 +10,22 @@
     <li>Username: {{ request.user.username }}</li>    
 </ul>
 
+<form action="{% url 'search' request.user.id%}" method="POST">
+    {% csrf_token %}
+    <input type="text" name="search" class="form_input" value="{{ search }}"/><br>
+    <input type="submit" value="Search" class = "form_input"></input>
+</form>
+
 <h4>Register to class</h4>
 
 <form action="{% url 'enrollment' request.user.id %}" method="POST">
     {% csrf_token %}
     <form class = "form">
     <select name="Subject">
-        {% for Subject in courses %}
+        {% for Subject in unenroll %}
+        {% if Subject.capacity > 0 %}
             <option value="{{ Subject.id }}">{{ Subject }}</option>
+        {% endif %}
         {% endfor %}        
     </select>
     <div class = "button">
@@ -25,11 +33,13 @@
     </div>
 </form>
 
+<h4>Remove from class</h4>
+
 <form action="{% url 'remove_enroll' request.user.id %}" method="POST">
     {% csrf_token %}
     <form class = "form">
     <select name="Subject" >
-        {% for Subject in courses %}
+        {% for Subject in enroll %}
             <option value="{{ Subject.id }}">{{ Subject }}</option>
         {% endfor %}        
     </select>
