@@ -17,11 +17,13 @@
     }
     h3 {
         font-size: larger;
-        font-family : "Helvetica", san-serif
+        font-family : "Helvetica", san-serif;
+        text-align : center;
     }
     h4 {
         font-size : larger;
-        font-family : "Georgia" , serif
+        font-family : "Georgia" , serif;
+        text-align : center;
     }
     div.topic{
         font-size : x-large ;

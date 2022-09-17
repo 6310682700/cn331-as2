@@ -51,14 +51,14 @@ aside ul li .fas {
 }
 
 .sidebar-toggle {
-  position: absolute;
+  position:absolute ;
   top: 0px;
   left: 205px;
   background: #90ee90;
-  padding: 20px 20px;
+  padding: 30px 30px;
   text-align: center;
-  border-radius: 20px;
-  cursor: pointer;
+  border-radius: 30px;
+  cursor: c;
 }
 
 input {

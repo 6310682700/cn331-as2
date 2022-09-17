@@ -10,16 +10,16 @@
     <li>Username: {{ request.user.username }}</li>    
 </ul></div>
 
+<h3> Class (capacity) : <h3>
+    
+    {% for Subject in courses %}
+    <h4>  {{Subject}} </h4>
+    {% endfor %}
+
 <!--{% if request.user.is_staff %}
 <a href="admin/">Admin</a>
 {% endif %}
 <a href="{% url 'logout' %}">Log out</a>
-
-<h3> Class (capacity) : <h3>
-    
-        {% for Subject in courses %}
-        <h4>  {{Subject}} </h4>
-        {% endfor %}
 
 <a href="{% url 'enroll' request.user.id %}">Add/Delete Enroll</a>
 
