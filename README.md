@@ -38,7 +38,7 @@ $ # Access the web app in browser: http://127.0.0.1:8000/
 ```
 Link สำรอง https://drive.google.com/file/d/16REoCU497_hNT3W1QoCigcOYMSXUZth9/view?usp=sharing  
 
-#Function:  
+Function:  
 1. Login รับค่า username และ password เพื่อนำไปใช้ในการ authentication  
 2. Logout ทิ้งค่า username และ password  
 3. search ค้นหารายวิชาเพื่อลงทะเบียน  
@@ -47,3 +47,8 @@ Link สำรอง https://drive.google.com/file/d/16REoCU497_hNT3W1QoCigcOYMS
 6. capacity เพิ่ม ลบจำนวนที่นังในวิชานั้นๆตามจำนวนคนลงทะเบียน  
 7. status admin สามารถเปิด-ปิดรับวิชาได้  
 8. sidebar เปิด-ปิดได้  
+
+User:  
+username: Admin password: reg_site_admin1480  
+username: Field password: chairattanarom  
+username: Non password: angsuvapattanakul  
