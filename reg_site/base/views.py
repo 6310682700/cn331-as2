@@ -50,6 +50,20 @@ def enroll(request, student_id):
         return HttpResponseRedirect(reverse('login'))
     student = Student.objects.get(Student_Users_id=request.user.id)
     course = Course.objects.all()
+    # if student.courses.all() != None:
+        # enroll = 
+    return render(request, 'users/enroll.html', {
+        "courses": course,
+        "subjects": student,
+    })
+
+def search(request):
+    if not request.user.is_authenticated:
+        return HttpResponseRedirect(reverse('login'))
+    student = Student.objects.get(Student_Users_id=request.user.id)
+    course = Course.objects.all()
+    # if student.course != None:
+        
     return render(request, 'users/enroll.html', {
         "courses": course,
         "subjects": student,
@@ -58,12 +72,14 @@ def enroll(request, student_id):
 def enrollment(request, student_id):
     course = Course.objects.get(id=request.POST["Subject"])
     student = Student.objects.get(Student_Users_id=student_id)
+    Course.objects.filter(id=request.POST["Subject"]).update(capacity=course.capacity - 1)
     student.courses.add(course)
     return HttpResponseRedirect(reverse("enroll", args=(request.user.id,)))
 
 def remove_enroll(request, student_id):
     course = Course.objects.get(id=request.POST["Subject"])
     student = Student.objects.get(Student_Users_id=student_id)
+    Course.objects.filter(id=request.POST["Subject"]).update(capacity=course.capacity + 1)
     student.courses.remove(course)
     return HttpResponseRedirect(reverse("enroll", args=(request.user.id,)))
 
