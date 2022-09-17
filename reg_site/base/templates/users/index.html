@@ -10,29 +10,22 @@
     <li>Username: {{ request.user.username }}</li>    
 </ul></div>
 
-<h3> Class (capacity) : <h3>
-    
+<h3> Class : <h3>
+<table border="2" cellpadding="5" style="margin: 0 auto;">
+    <td>Course Code</td>
+    <td>Course Name</td>
+    <td>Year</td>
+    <td>Semester</td>
+
     {% for Subject in courses %}
-    <h4>  {{Subject}} </h4>
+    <tr>
+        <td>{{Subject.Subject}}</td>
+        <td>{{Subject.Subject_name}}</td>
+        <td>{{Subject.Year}}</td>
+        <td>{{Subject.Semester}}</td>
+    </tr>    
     {% endfor %}
 
-<!--{% if request.user.is_staff %}
-<a href="admin/">Admin</a>
-{% endif %}
-<a href="{% url 'logout' %}">Log out</a>
-
-<a href="{% url 'enroll' request.user.id %}">Add/Delete Enroll</a>
-
- <h4>Remove to class</h4>
-
-<form  method="POST">
-    {% csrf_token %}
-    <select name="Student">
-        {% for Subject in Class %}
-            <option value="{{ Subject }}">{{ Subject }}</option>
-        {% endfor %}
-    </select>
-    <input type="submit" value="Remove Me from class">
-</form> -->
+</table>
 
 {% endblock %}

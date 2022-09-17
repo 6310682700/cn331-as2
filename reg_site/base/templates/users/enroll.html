@@ -23,7 +23,7 @@
     <form class = "form">
     <select name="Subject">
         {% for Subject in unenroll %}
-        {% if Subject.capacity > 0 %}
+        {% if Subject.capacity > 0 and Subject.status == True %}
             <option value="{{ Subject.id }}">{{ Subject }}</option>
         {% endif %}
         {% endfor %}        

@@ -1,4 +1,6 @@
 from enum import unique
+from operator import mod
+from re import M
 from django.db import models
 from django.contrib.auth.models import User
 
@@ -6,7 +8,11 @@ from django.contrib.auth.models import User
 
 class Course(models.Model):
     Subject = models.CharField(max_length=99)
+    Subject_name = models.CharField(max_length=99)
+    Year = models.IntegerField()
+    Semester = models.IntegerField()
     capacity = models.IntegerField()
+    status = models.BooleanField()
 
     def __str__(self):
         return f"{self.Subject} ({self.capacity})"
