@@ -1,10 +1,10 @@
 
     body {
-        font-family: font-family;
-        font-size: font-size;
+        font-family: 'Courier New', Courier, monospace;
         background-size: 200% 100% ;
         background: linear-gradient(45deg, #49D49D 10%, #A2C7E5 90%);
-        height: 100vh
+        height: 100vh;
+        font-weight : bold;
     }
     h1 {
         font-weight : Bold;
@@ -15,14 +15,25 @@
         font-weight : Bold;
         font-family : "Time New Roman" ,serif ;
     }
-    li { 
-        font-size : x-large ;
-    }
     h3 {
         font-size: larger;
-        font-family : "Helvetica", san-serif
+        font-family : "Helvetica", san-serif;
+        text-align : center;
     }
     h4 {
         font-size : larger;
-        font-family : "Georgia" , serif
+        font-family : "Georgia" , serif;
+        text-align : center;
+    }
+    div.topic{
+        font-size : x-large ;
+        text-align: center;
+    }
+    ul.myUL {
+        display: inline-block;
+        text-align: center;
+      }
+    .username{
+        text-align: center;
+        list-style-type: none ;
     }

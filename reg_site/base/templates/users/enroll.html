@@ -1,5 +1,5 @@
 {% extends 'users/layout.html' %}
-{% block body %}
+{% block content %}
 
 {% load static %}
 <link rel="stylesheet" href="{% static 'index/add.css' %}" type = "text/css">
@@ -38,6 +38,6 @@
     </div>
 </form>
 
-<a href="{% url 'index' %}">Back</a>
 </div>
+
 {% endblock %}
