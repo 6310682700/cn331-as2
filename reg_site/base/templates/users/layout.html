@@ -3,10 +3,11 @@
 
 <div class = "sidebar">
     <input type="checkbox" id="toggler" />
-    <aside class="aside-wrapper">
-      <h1 class="logo-text"><span>CN331 Registration</span> <label for="toggler"><i class="fas fa-bars sidebar-toggle"></i></label></h1>
+    <aside class="aside-wrapper" style = "top : 0px; ">
+      <h1 class="logo-text"><span>CN331 Registration</span> <label for="toggler"><i class="sidebar-toggle" ></i></label></h1>
     
       <ul>
+        <li><a href="{% url 'index' %}">Home page</a></li>
         <li><a href="{% url 'enroll' request.user.id %}">Registration</a></li>
         <li><a href="{% url 'logout' %}">Log out</a></li>
         {% if request.user.is_staff %}

@@ -1,15 +1,16 @@
 {% extends 'users/layout.html' %}
-{% block body %}
+{% block content %}
 
 {% load static %}
 <link rel="stylesheet" href="{% static 'index/style.css' %}" type = "text/css">
 
 <h1>Welcome, {{ request.user.first_name }}</h1>
 <ul>
+    <div class  = "username">
     <li>Username: {{ request.user.username }}</li>    
-</ul>
+</ul></div>
 
-{% if request.user.is_staff %}
+<!--{% if request.user.is_staff %}
 <a href="admin/">Admin</a>
 {% endif %}
 <a href="{% url 'logout' %}">Log out</a>
@@ -22,7 +23,7 @@
 
 <a href="{% url 'enroll' request.user.id %}">Add/Delete Enroll</a>
 
-<!-- <h4>Remove to class</h4>
+ <h4>Remove to class</h4>
 
 <form  method="POST">
     {% csrf_token %}

@@ -1,9 +1,10 @@
 
     body {
-        font-family: font-family;
+        font-family: 'Courier New', Courier, monospace;
         background-size: 200% 100% ;
         background: linear-gradient(45deg, #49D49D 10%, #A2C7E5 90%);
-        height: 100vh
+        height: 100vh;
+        font-weight : bold;
     }
     h1 {
         font-weight : Bold;
@@ -31,5 +32,6 @@
         text-align: center;
       }
     .username{
-        text-decoration: center;
+        text-align: center;
+        list-style-type: none ;
     }
