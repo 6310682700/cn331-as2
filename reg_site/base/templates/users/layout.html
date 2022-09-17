@@ -11,7 +11,7 @@
         <li><a href="{% url 'enroll' request.user.id %}">Registration</a></li>
         <li><a href="{% url 'logout' %}">Log out</a></li>
         {% if request.user.is_staff %}
-        <li><a href="admin/">Admin</a></li>
+        <li><a href="{% url 'admin:index' %}">Admin</a></li>
             {% endif %}
       </ul>
     </aside>
