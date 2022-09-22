@@ -1,1 +1,2 @@
-web : gunicorn --pythonpath reg_site reg_site.wsgi
+release: python manage.py migrate
+web: gunicorn yourprojectname.wsgi
