@@ -17,7 +17,7 @@ from .models import Course, Student, Enroll
 def index(request):
     if not request.user.is_authenticated:
         return HttpResponseRedirect(reverse('login'))
-    student = Student.objects.get(Student_Users_id=request.user.id)
+    student = Student.objects.get(Student_Users_id=student_id)
     return render(request, 'users/index.html', {
         "courses": student.courses.all()
     })    
@@ -47,7 +47,7 @@ def logout_view(request):
 def enroll(request, student_id):
     if not request.user.is_authenticated:
         return HttpResponseRedirect(reverse('login'))
-    student = Student.objects.get(Student_Users_id=request.user.id)                         # User's student object
+    student = Student.objects.get(Student_Users_id=student_id)                         # User's student object
     course = Course.objects.all()                                                           # All courses
     if student.courses.all() != None:                                           
         enroll = Enroll.objects.filter(student_id=student.id)                               # Filter to only User's enroll
@@ -62,7 +62,7 @@ def enroll(request, student_id):
 def search(request, student_id):
     if not request.user.is_authenticated:
         return HttpResponseRedirect(reverse('login'))
-    student = Student.objects.get(Student_Users_id=request.user.id)                         # User's student object
+    student = Student.objects.get(Student_Users_id=student_id)                         # User's student object
     course = Course.objects.all()                                                           # All courses
     if student.courses != None:
         enroll = Enroll.objects.filter(student_id=student.id)                               # Filter to only User's enroll
@@ -80,12 +80,13 @@ def enrollment(request, student_id):
     student = Student.objects.get(Student_Users_id=student_id)
     Course.objects.filter(id=request.POST["Subject"]).update(capacity=course.capacity - 1)  # Subtract 1 the capacity from the selected course
     student.courses.add(course)
-    return HttpResponseRedirect(reverse("enroll", args=(request.user.id,)))
+    return HttpResponseRedirect(reverse("enroll", args=(student_id,)))
 
 def remove_enroll(request, student_id):
     course = Course.objects.get(id=request.POST["Subject"])                                 # Get input from form
     student = Student.objects.get(Student_Users_id=student_id)
     Course.objects.filter(id=request.POST["Subject"]).update(capacity=course.capacity + 1)  # Add 1 the capacity from the selected course
     student.courses.remove(course)
-    return HttpResponseRedirect(reverse("enroll", args=(request.user.id,)))
+    return HttpResponseRedirect(reverse("enroll", args=(student_id,)))
+   
 

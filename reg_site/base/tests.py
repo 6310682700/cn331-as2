@@ -7,34 +7,26 @@ from django.contrib.auth.models import User
 class testModel(TestCase):
 
     def setUp(self):
-        user = User.objects.create("non")
-        course1 = Course.objects.create(Subject="AA",Subject_name = "A", Year = 1 ,Semester = 1, capacity = 1, status = True )
-        course2 = Course.objects.create(Subject="BB",Subject_name = "B", Year = 1 ,Semester = 1, capacity = 1, status = True )
+        User.objects.create(username = "non")
+        Course.objects.create(Subject="AA",Subject_name = "A", Year = 1 ,Semester = 1, capacity = 1, status = True )
+        Course.objects.create(Subject="BB",Subject_name = "B", Year = 1 ,Semester = 1, capacity = 0, status = True )
 
-        student = Student.objects.create(
-            Student_Users = user
+        Student.objects.create(
+            Student_Users = User.objects.first()
         )
 
-        enroll = Enroll.objects.create(
-            Student = user , course= "course1"
+        Enroll.objects.create(
+            student = Student.objects.first() , course= Course.objects.first()
         )
 
-    def test_index_status(self):
-        c = client()
-        response = c.get(reverse('users:index'))
-        self.assertEqual(response.status_code, 200)
+    def test_capacity_availible(self):
+        course = Course.objects.first()
+        self.assertEqual(course.capacity, 1)
+        
+
+    def test_capacity_non_availible(self):
+        course = Course.objects.get(pk = 2)
+        self.assertEqual(course.capacity, 0)
+        
     
-    def test_registration(self):
-        student = Student.objects.create("non")
-        s = User.objects.first()
-        s.capacity = 1
-        s.save()
-
-        c = client()
-        response = c.get(reverse('users:enroll'))
-        self.assertEqual(response.context['users'].count(), 1)
-
-    def test_regist_page(self):
-        c = client()
-        response = c.get(reverse('users:enroll'))
-        self.assertEqual(response.status_code, 200)
+        
