@@ -17,7 +17,7 @@ from .models import Course, Student, Enroll
 def index(request):
     if not request.user.is_authenticated:
         return HttpResponseRedirect(reverse('login'))
-    student = Student.objects.get(Student_Users_id=student_id)
+    student = Student.objects.get(Student_Users_id=request.user.id)
     return render(request, 'users/index.html', {
         "courses": student.courses.all()
     })    
