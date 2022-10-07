@@ -5,3 +5,4 @@ sqlparse == 0.4.2
 asgiref == 3.5.2
 tzdata==2022.2
 django-heroku
+coverage
